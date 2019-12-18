@@ -29,8 +29,6 @@ const getInfo = async() => {
         return dato;
     });
     let cl = await clima.getcl();
-    console.log(tmp);
-    return tmp;
 }
 
 const getInfo2 = async() => {
@@ -39,9 +37,6 @@ const getInfo2 = async() => {
         tmp1 = dato;
         return dato;
     });
-    let cl = await clima.getcl();
-    console.log(tmp);
-    return tmp;
 }
 
 const getInfo3 = async() => {
@@ -50,9 +45,6 @@ const getInfo3 = async() => {
         tmp2 = dato;
         return dato;
     });
-    let cl = await clima.getcl();
-    console.log(tmp);
-    return tmp;
 }
 const getInfo4 = async() => {
     //Paris
@@ -60,15 +52,13 @@ const getInfo4 = async() => {
         tmp3 = dato;
         return dato;
     });
-    let cl = await clima.getcl();
-    console.log(tmp);
-    return tmp;
 }
 
 getInfo();
 getInfo2();
 getInfo3();
 getInfo4();
+
 app.get('/', function(req, res) {
     res.render('home', {
         nombre: "juLiO Saráuz",
