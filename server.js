@@ -31,7 +31,18 @@ const getInfo2 = async() => {
     return cl;
 }
 
-
+const getInfo3 = async() => {
+    //Madrid
+    var clim = await clima.getClima(-3.7025600, 40.4165000);
+    let cl = await clima.getcl();
+    return cl;
+}
+const getInfo4 = async() => {
+    //Paris
+    var clim = await clima.getClima(2.3486000, 48.8534000);
+    let cl = await clima.getcl();
+    return cl;
+}
 
 app.get('/', function(req, res) {
     res.render('home', {
@@ -42,7 +53,10 @@ app.get('/', function(req, res) {
 });
 
 app.get('/about', (req, res) => {
-    res.render('about');
+    res.render('about', {
+        temperatura: getInfo3(),
+        temperatura2: getInfo4()
+    });
 });
 
 
