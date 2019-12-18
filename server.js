@@ -9,7 +9,7 @@ const hbs = require('hbs');
 const port = process.env.PORT || 3000;
 //llamado a helpers
 require('./hbs/helpers')
-
+let tmp = 0;
 app.use(express.static(__dirname + '/public'));
 
 //express HBS engine
@@ -19,35 +19,52 @@ app.engine('hbs', hbs.__express);
 
 const getInfo = async() => {
     //Quito
-    let clim = await clima.getClima(-0.19, -78.5);
-    let cl = await clima.getcl();
-    return cl;
-}
 
+    let clim = await clima.getClima(-0.19, -78.5).then(function(dato) {
+        tmp = dato;
+        return dato;
+    });
+    let cl = await clima.getcl();
+    console.log(tmp);
+    return tmp;
+}
+getInfo();
 const getInfo2 = async() => {
     //Guayaquil
-    var clim = await clima.getClima(-2.1961601, -79.8862076);
+    var clim = await clima.getClima(-2.1961601, -79.8862076).then(function(dato) {
+        tmp = dato;
+        return dato;
+    });
     let cl = await clima.getcl();
-    return cl;
+    console.log(tmp);
+    return tmp;
 }
 
 const getInfo3 = async() => {
     //Madrid
-    var clim = await clima.getClima(-3.7025600, 40.4165000);
+    var clim = await clima.getClima(-3.7025600, 40.4165000).then(function(dato) {
+        tmp = dato;
+        return dato;
+    });
     let cl = await clima.getcl();
-    return cl;
+    console.log(tmp);
+    return tmp;
 }
 const getInfo4 = async() => {
     //Paris
-    var clim = await clima.getClima(2.3486000, 48.8534000);
+    var clim = await clima.getClima(2.3486000, 48.8534000).then(function(dato) {
+        tmp = dato;
+        return dato;
+    });
     let cl = await clima.getcl();
-    return cl;
+    console.log(tmp);
+    return tmp;
 }
 
 app.get('/', function(req, res) {
     res.render('home', {
         nombre: "juLiO Saráuz",
-        temperatura: getInfo(),
+        temperatura: tmp,
         temperatura2: getInfo2()
     });
 });
